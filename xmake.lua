@@ -1,9 +1,10 @@
+
 set_project('StudyCpp')
 
 set_version('0.0.1')
 
 -- 设置c++11标准
-set_languages('cxx11')
+set_languages('cxx14')
 -- 设置工具链为clang
 set_toolchains('clang')
 -- 设置优化等级为O1
@@ -12,6 +13,7 @@ set_optimize('fast')
 set_warnings('all', 'error')
 
 includes('vs_cpp')
+
 
 --[[
 usage: name为文件名去后缀部分
