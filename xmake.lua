@@ -12,8 +12,9 @@ set_optimize('fast')
 -- 启用所有警告，并当做编译错误处理
 set_warnings('all', 'error')
 
-includes('vs_cpp')
+add_cxxflags('-v')
 
+includes('vs_cpp', 'ffmpeg')
 
 --[[
 usage: name为文件名去后缀部分

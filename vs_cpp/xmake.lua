@@ -19,11 +19,11 @@ function build_case(name, libs, packages)
 
         if (packages)
         then
-            add_packages('gtest')
+            add_packages(packages)
         end
     target_end()
 end
 
 build_case('case037')
 build_case('test_spdlog', {'spdlog', 'fmt'})
-build_case('case038', nil, true)
+build_case('case038', nil, {'gtest'})
