@@ -4,21 +4,10 @@ add_requires("libavfilter", {system=true})
 add_requires("libavformat", {system=true})
 add_requires("libavutil", {system=true})
 
-function build_case(name, libs, packages)
-    target(name)
-        set_kind('binary')
-        add_files(name..".cpp")
+add_requires('spdlog', {system=true})
 
-        if (libs)
-        then
-            add_links(libs)
-        end
-
-        if(packages)
-        then
-            add_packages(packages)
-        end
-    target_end()
-end
 
 build_case('log_test', nil, {'libavutil'})
+build_case('ffmpeg_ls', nil, {'libavutil', 'libavformat'})
+build_case('get_info', nil, {'libavformat', 'libavutil', 'spdlog'})
+build_case('ff_test04', nil, {'libavformat', 'libavcodec', 'libavutil', 'spdlog'})
