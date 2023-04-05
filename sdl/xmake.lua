@@ -8,3 +8,6 @@ end
 
 sdl_test('sdl_case01')
 sdl_test('sdl_case02')
+build_case('sdl_case03', {'spdlog', 'fmt'}, {'sdl2'})
+build_case('sdl_case04', {'spdlog', 'fmt'}, {'sdl2'})
+build_case('sdl_case05', {'spdlog', 'fmt'}, {'sdl2', 'SDL2_image'})
