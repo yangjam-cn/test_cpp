@@ -16,6 +16,7 @@ add_cxxflags('-g', '-debug')
 -- 设置目标文件输出目录
 set_targetdir('./')
 
+add_includedirs('include')
 
 --[[
     name: 要编译文件的前缀
@@ -39,7 +40,7 @@ function build_case(name, libs, packages)
     target_end()
 end
 
-includes('vs_cpp', 'ffmpeg', 'opencv', 'sdl')
+includes('cpp', 'ffmpeg', 'opencv', 'sdl')
 
 --[[
 usage: name为文件名去后缀部分
