@@ -14,27 +14,21 @@ public:
     CCase05()  = default;
     ~CCase05() = default;
 
-    void Run() override
+    void RenderWindow() override
     {
         auto background = LoadTexture("test.bmp");
         auto front      = LoadTexture("resources/picture/wallpaper19.jpg");
 
-        for (int i = 0; i < 10; ++i)
-        {
-            SDL_RenderClear(m_pRenderer);
+        SDL_RenderClear(m_pRenderer);
 
-            RenderTexture(background, nullptr, nullptr);
+        RenderTexture(background, nullptr, nullptr);
 
-            SDL_Rect backRect  = {DEFAULT_WIDTH / 4, DEFAULT_HEIGHT / 4, DEFAULT_WIDTH / 2, DEFAULT_HEIGHT / 2};
-            // SDL_Rect frontRect = {DEFAULT_WIDTH / 4, DEFAULT_HEIGHT / 4, DEFAULT_WIDTH / 2, DEFAULT_HEIGHT / 2};
+        SDL_Rect backRect = {DEFAULT_WIDTH / 4, DEFAULT_HEIGHT / 4, DEFAULT_WIDTH / 2, DEFAULT_HEIGHT / 2};
+        // SDL_Rect frontRect = {DEFAULT_WIDTH / 4, DEFAULT_HEIGHT / 4, DEFAULT_WIDTH / 2, DEFAULT_HEIGHT / 2};
 
-            RenderTexture(front, nullptr, &backRect);
+        RenderTexture(front, nullptr, &backRect);
 
-            SDL_RenderPresent(m_pRenderer);
-
-            SDL_Delay(1000);
-        }
-
+        SDL_RenderPresent(m_pRenderer);
     }
 };
 
@@ -48,7 +42,9 @@ int main()
         return -1;
     }
 
-    case05.Run();
+    case05.RenderWindow();
+
+    SDL_Delay(5000);
 
     return 0;
 }

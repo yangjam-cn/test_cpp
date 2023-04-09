@@ -22,6 +22,13 @@ const int DEFAULT_HEIGHT = 720;
 typedef unsigned int TextureIndex;
 const TextureIndex   INVALID_TEXTURE = 0;
 
+
+/**
+ * @brief 这是一个基础的SDL窗口框架，用于初始化窗口和渲染器，实现自动资源管理；
+ * 提供一个已实现的Init方法，用于创建一个简单的自定义窗口和渲染器，子类可以重载该方法来创建更复杂的窗口；
+ * 内置一个纹理管理器，通过序号访问生成的纹理，可以手动释放和管理器自动释放纹理资源；
+ * 提供一个RenderWindow接口，需要子类去实现具体的渲染窗口的方法。
+ */
 class CSdlFrameworkBase {
 public:
     CSdlFrameworkBase() {}
@@ -76,7 +83,7 @@ public:
         return 0;
     }
 
-    virtual void Run() = 0;
+    virtual void RenderWindow() = 0;
 
     /**
      * @brief 手动释放对象管理的纹理
@@ -101,6 +108,7 @@ protected:
      */
     TextureIndex LoadTexture(std::string path)
     {
+#if 0
         SDL_Surface* surface = IMG_Load(path.c_str());
         if (nullptr == surface)
         {
@@ -109,6 +117,9 @@ protected:
         }
         SDL_Texture* texture = SDL_CreateTextureFromSurface(m_pRenderer, surface);
         SDL_FreeSurface(surface);
+#else
+        SDL_Texture* texture = IMG_LoadTexture(m_pRenderer, path.c_str());
+#endif
         if (texture == nullptr)
         {
             spdlog::error("Failed to create texture: {}", SDL_GetError());
